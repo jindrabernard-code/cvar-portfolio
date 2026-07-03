@@ -1,6 +1,5 @@
 # CVaR Portfolio Optimization — CEE Equities Data Collection
 
-**Master's Thesis — Topic 2**  
 *CVaR-Based Portfolio Optimization for Central and Eastern European Equity Markets*
 
 ## Contents
