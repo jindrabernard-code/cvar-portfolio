@@ -5,7 +5,7 @@
 > (`www.pse.cz/api/indexes`, paginated) and WIG20 via the GPW Benchmark chart
 > API (`gpwbenchmark.pl/chart-json.php`, full daily archive). `PX.csv` and
 > `WIG20.csv` exist in this folder and are already merged into
-> `topic2_panel.csv`. The manual instructions below are kept as a fallback.
+> `cvar_portfolio_panel.csv`. The manual instructions below are kept as a fallback.
 
 Both indices are unavailable via Yahoo Finance (confirmed: all tickers return empty).
 Download manually from the official exchange websites below.
@@ -20,10 +20,10 @@ Download manually from the official exchange websites below.
 1. Go to: https://www.pse.cz/udaje-o-trhu/indexy/px/historicke-hodnoty
 2. Set date range: 2015-01-01 → 2024-12-31
 3. Click "Stáhnout jako CSV" or export button
-4. Save as: `PX.csv` in this folder (`topic2_cvar_portfolio/data/indices/`)
+4. Save as: `PX.csv` in this folder (`data/indices/`)
 
 **Is the key data enough?**
-For Topic 2 (CVaR portfolio optimisation), the PX index serves as the **Czech benchmark** for:
+For the CVaR portfolio optimisation, the PX index serves as the **Czech benchmark** for:
 - Beta computation (sensitivity of Czech stocks to the local market)
 - Sharpe ratio benchmarking
 - Portfolio performance attribution
@@ -79,6 +79,6 @@ date,WIG20
 
 ## After Download — Integration into Panel
 
-Once downloaded, place both files in `topic2_cvar_portfolio/data/indices/`
+Once downloaded, place both files in `data/indices/`
 and re-run `build_panel.py` — it will automatically pick them up and include them
-in `topic2_panel.csv`.
+in `cvar_portfolio_panel.csv`.

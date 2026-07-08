@@ -1,4 +1,4 @@
-# Thesis Topic 2: CVaR-Constrained Portfolio Optimization for Czech/CEE Equities
+# CVaR-Constrained Portfolio Optimization for Czech/CEE Equities
 
 ## 1. Topic Summary
 

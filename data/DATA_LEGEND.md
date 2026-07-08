@@ -1,4 +1,4 @@
-# Data Legend — Topic 2: CVaR-Constrained Portfolio Optimization for Czech/CEE Equities
+# Data Legend — CVaR-Constrained Portfolio Optimization for Czech/CEE Equities
 
 Generated: 2026-07-03 | Period covered: 2015-01-01 – 2024-12-31
 

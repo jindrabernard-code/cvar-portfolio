@@ -15,7 +15,7 @@
 | `data/indices/` | Benchmark indices: ATX, BUX, STOXX50E, DAX, S&P500, PX, WIG20 |
 | `data/fx/` | FX rates: CZK/EUR, PLN/EUR, HUF/EUR, USD/EUR (ECB SDW) |
 | `data/rates/` | Risk-free rates: PRIBOR proxy, €STR, CZ 10Y gov bond |
-| `data/topic2_panel.csv` | **Merged daily panel — 3,653 rows × 58 columns** |
+| `data/cvar_portfolio_panel.csv` | **Merged daily panel — 3,653 rows × 58 columns** |
 | `data/DATA_LEGEND.md` | Full documentation of all variables, units, sources |
 
 ## Quick Start

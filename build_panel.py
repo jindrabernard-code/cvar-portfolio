@@ -1,11 +1,11 @@
 """
-build_panel.py  —  Topic 2: CVaR Portfolio Optimization (CEE Equities)
-=======================================================================
+build_panel.py  —  CVaR Portfolio Optimization (CEE Equities)
+=============================================================
 Merges all collected data into a single wide-format daily panel CSV.
 
 Output
 ------
-  data/topic2_panel.csv
+  data/cvar_portfolio_panel.csv
   Index : date (YYYY-MM-DD, business days union)
   Columns:
 
@@ -43,7 +43,7 @@ logging.basicConfig(level=logging.INFO,
 log = logging.getLogger(__name__)
 
 DATA_DIR = Path(__file__).parent / "data"
-OUT_FILE = DATA_DIR / "topic2_panel.csv"
+OUT_FILE = DATA_DIR / "cvar_portfolio_panel.csv"
 
 START = "2015-01-01"
 END   = "2024-12-31"
@@ -145,7 +145,7 @@ def load_indices() -> pd.DataFrame:
 def build_panel() -> None:
     sep = "═" * 60
     log.info(sep)
-    log.info("Topic 2 — Building Daily Panel Dataset")
+    log.info("CVaR Portfolio — Building Daily Panel Dataset")
     log.info(sep)
 
     fx      = load_fx()

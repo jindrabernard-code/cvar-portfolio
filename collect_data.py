@@ -1,7 +1,7 @@
 """
-collect_data.py  —  Topic 2: CVaR-Constrained Portfolio Optimization (CEE Equities)
+collect_data.py  —  CVaR-Constrained Portfolio Optimization (CEE Equities)
 ====================================================================================
-Downloads all data needed for the Markowitz vs CVaR portfolio-optimization thesis
+Downloads all data needed for the Markowitz vs CVaR portfolio-optimization project
 on Czech / Central-Eastern-European equities.
 
 Data collected
@@ -324,7 +324,7 @@ def collect_rates(out_dir: Path) -> None:
 def main() -> None:
     sep = "═" * 60
     log.info(sep)
-    log.info("Topic 2 — CEE Portfolio Data Collection")
+    log.info("CVaR Portfolio — CEE Data Collection")
     log.info(f"Period  : {START}  →  {END}")
     log.info(f"Output  : {DATA_DIR.resolve()}")
     log.info(f"Stocks  : {len(ALL_EQUITIES)} equities  |  {len(INDICES)} indices")
