@@ -29,8 +29,8 @@ Apply FX rates from `data/fx/` to express all returns in a common currency.
 | `MONET.PR.csv` | Moneta Money Bank | Banking | 1,993 | Czech retail bank; IPO May 2016 — data from 2016-05 only |
 | `TABAK.PR.csv` | Philip Morris ČR | Consumer Staples | 2,504 | Czech subsidiary of Philip Morris International (PMI) |
 | `VIG.PR.csv` | Vienna Insurance Group | Insurance | 2,504 | Austrian insurer; Prague dual-listed |
-| `O2CR.PR` | O2 Czech Republic | Telecom | **NOT AVAILABLE** | Ticker not served by Yahoo Finance; download from PSE directly |
-| `COLT.PR` | Colt CZ Group | Industrials | **NOT AVAILABLE** | Listed ~2019; not served by Yahoo Finance for this ticker |
+| `O2CR.PR.csv` | O2 Czech Republic | Telecom | 1,790 | PSE API (`download_pse_equities.py`); **raw close, not dividend-adjusted**; delisted Feb 2022 — data 2015-01 – 2022-02 |
+| `COLT.PR.csv` | Colt CZ Group | Industrials | 1,151 | PSE API (`download_pse_equities.py`); **raw close, not dividend-adjusted**; listed Jun 2020 — data 2020-06 – 2024-12 |
 
 ### Poland — Warsaw Stock Exchange (GPW)
 
@@ -82,10 +82,8 @@ Apply FX rates from `data/fx/` to express all returns in a common currency.
 | `STOXX50E.csv` | Euro Stoxx 50 | Pan-European | 2,514 | 50 largest Eurozone companies; systemic risk benchmark |
 | `GDAXI.csv` | DAX 40 | Frankfurt (XETRA) | 2,537 | German blue-chip; CZ equities historically correlated with DE |
 | `GSPC.csv` | S&P 500 | New York (NYSE/NASDAQ) | 2,515 | Global risk-off benchmark |
-
-**Not collected:**
-- `^PX` (Prague PX index): Not served by Yahoo Finance for historical data. Download from PSE: https://www.pse.cz/en/market-statistics/indices/index-values/PX
-- `^WIG20` (Warsaw WIG20): Not served by Yahoo Finance. Download from GPW: https://gpwbenchmark.pl/en/indexes/WIG20
+| `PX.csv` | PX | Prague (PSE) | 2,504 | Official PSE API (`download_indices.py`); daily closing values |
+| `WIG20.csv` | WIG20 | Warsaw (GPW) | 2,500 | GPW Benchmark chart API (`download_indices.py`); daily closing values |
 
 ---
 
@@ -128,11 +126,11 @@ The FRED series `IRSTCI01CZM156N` is the Czech Republic's immediate interbank ca
 
 | Category | Count | Coverage | Primary Use |
 |---|---|---|---|
-| CEE equities | 20 stocks | 2015-2024 (partial: MONET from 2016, ALE from 2020) | Portfolio weights, return distributions |
-| Benchmark indices | 5 (ATX, BUX, STOXX50E, DAX, S&P500) | 2015-2024 | Performance comparison |
+| CEE equities | 22 stocks | 2015-2024 (partial: MONET from 2016, ALE from 2020, COLT from 2020-06, O2CR until 2022-02) | Portfolio weights, return distributions |
+| Benchmark indices | 7 (ATX, BUX, STOXX50E, DAX, S&P500, PX, WIG20) | 2015-2024 | Performance comparison |
 | FX rates | 4 pairs | 2015-2024 (2,561 trading days each) | Currency normalization |
 | Risk-free rates | 3 series | 2015-2024 (monthly; €STR from 2019) | Sharpe/Sortino denominator |
-| **Total CSV files** | **32** | — | — |
+| **Total CSV files** | **36** | — | — |
 
 ---
 
@@ -140,11 +138,11 @@ The FRED series `IRSTCI01CZM156N` is the Czech Republic's immediate interbank ca
 
 | Data | Why Missing | Manual Download |
 |---|---|---|
-| ^PX (Prague PX index) | Yahoo Finance does not serve it | https://www.pse.cz/en/market-statistics/indices/index-values/PX |
-| ^WIG20 (Warsaw WIG20) | Yahoo Finance does not serve it | https://gpwbenchmark.pl/en/indexes/WIG20 |
-| O2CR.PR (O2 Czech Republic) | Ticker not available on Yahoo Finance | https://www.pse.cz/en/market-statistics/listed-securities/shares/detail/O2C |
-| COLT.PR (Colt CZ Group) | Ticker not available on Yahoo Finance | https://www.pse.cz/en/market-statistics/listed-securities/shares/detail/COLT |
-| PRIBOR 3M (exact) | ČNB ARAD API returned no data in this run | https://www.cnb.cz/en/statistics/financial-market-supervision-statistics/financial-markets/money-market-statistics/ |
+| PRIBOR 3M (exact) | ČNB ARAD API returned no data in this run; FRED proxy used instead | https://www.cnb.cz/en/statistics/financial-market-supervision-statistics/financial-markets/money-market-statistics/ |
+
+Previously missing series that are now collected automatically:
+- **PX, WIG20** — `download_indices.py` (PSE API + GPW Benchmark API)
+- **O2CR.PR, COLT.PR** — `download_pse_equities.py` (PSE API; raw close, not dividend-adjusted)
 
 ---
 
@@ -156,6 +154,9 @@ collect_data.py
 ├── collect_indices()   →  Yahoo Finance (yfinance)
 ├── collect_fx()        →  ECB SDW REST API (JSON/CSV)
 └── collect_rates()     →  FRED REST API (CSV)
+
+download_indices.py       →  PX (PSE API), WIG20 (GPW Benchmark API)
+download_pse_equities.py  →  O2CR.PR, COLT.PR (PSE API)
 ```
 
 Re-run with `python collect_data.py` — already-existing files are skipped automatically.

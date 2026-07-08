@@ -1,5 +1,12 @@
 # PX Index & WIG20 — Manual Download Instructions
 
+> **RESOLVED (2026-07-08):** Both indices are now downloaded automatically by
+> `download_indices.py` — PX via the official PSE API
+> (`www.pse.cz/api/indexes`, paginated) and WIG20 via the GPW Benchmark chart
+> API (`gpwbenchmark.pl/chart-json.php`, full daily archive). `PX.csv` and
+> `WIG20.csv` exist in this folder and are already merged into
+> `topic2_panel.csv`. The manual instructions below are kept as a fallback.
+
 Both indices are unavailable via Yahoo Finance (confirmed: all tickers return empty).
 Download manually from the official exchange websites below.
 
